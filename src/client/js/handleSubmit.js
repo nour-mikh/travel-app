@@ -8,7 +8,7 @@ search.addEventListener('click', generateInfo)
 function generateInfo(e){
     e.preventDefault();
     let city = document.getElementById('location').value
-    getInfo(baseUrl + city + user)
+    getInfo(baseUrl, city, user)
 }
 
 const getInfo = async (baseUrl, city, user) => {
@@ -51,13 +51,13 @@ const postData = async ( url = '', data = {})=>{
   }
 
   const updateUI = async() => {
-    const update = await fetch('/data');
+    const update = await fetch('/');
     const data = await update.json();
     try{
       console.log(data)
-      document.getElementById('location').innerHTML = 'Country:' + data.countryName;
-      document.getElementById('long').innerHTML = 'Longitude' + data.longitude;
-      document.getElementById('lat').innerHTML = 'Latitude' + data.latitude;
+      document.getElementById('country').innerHTML = 'Country:' + res.countryName;
+      document.getElementById('long').innerHTML = 'Longitude' + res.longitude;
+      document.getElementById('lat').innerHTML = 'Latitude' + res.latitude;
     } catch(error) {
       console.log('error', error)
     }

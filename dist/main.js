@@ -91,11 +91,11 @@ var Client =
 /*!*****************************!*\
   !*** ./src/client/index.js ***!
   \*****************************/
-/*! exports provided: generateInfo, getInfo, postData, updateUI */
+/*! exports provided: generateInfo, getInfo, postData, updateUI, paris, beirut, london, santorini */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/client/styles/style.scss\");\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/handleSubmit */ \"./src/client/js/handleSubmit.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"getInfo\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"getInfo\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"generateInfo\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"generateInfo\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"postData\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"postData\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"updateUI\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"updateUI\"]; });\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://Client/./src/client/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/client/styles/style.scss\");\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/handleSubmit */ \"./src/client/js/handleSubmit.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"getInfo\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"getInfo\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"generateInfo\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"generateInfo\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"postData\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"postData\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"updateUI\", function() { return _js_handleSubmit__WEBPACK_IMPORTED_MODULE_1__[\"updateUI\"]; });\n\n/* harmony import */ var _media_paris_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./media/paris.png */ \"./src/client/media/paris.png\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"paris\", function() { return _media_paris_png__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _media_beirut_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./media/beirut.png */ \"./src/client/media/beirut.png\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"beirut\", function() { return _media_beirut_png__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n/* harmony import */ var _media_london_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./media/london.png */ \"./src/client/media/london.png\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"london\", function() { return _media_london_png__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n/* harmony import */ var _media_santorini_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./media/santorini.png */ \"./src/client/media/santorini.png\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"santorini\", function() { return _media_santorini_png__WEBPACK_IMPORTED_MODULE_5__[\"default\"]; });\n\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://Client/./src/client/index.js?");
 
 /***/ }),
 
@@ -107,7 +107,55 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getInfo\", function() { return getInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"generateInfo\", function() { return generateInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"postData\", function() { return postData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"updateUI\", function() { return updateUI; });\nconst baseUrl = 'http://api.geonames.org/searchJSON?name='\r\nconst user = '&username=nour_m&maxRows=10'\r\n\r\nconst search = document.getElementById('search');\r\n\r\nsearch.addEventListener('click', generateInfo)\r\n\r\nfunction generateInfo(e){\r\n    e.preventDefault();\r\n    let city = document.getElementById('location').value\r\n    getInfo(baseUrl + city + user)\r\n}\r\n\r\nconst getInfo = async (baseUrl, city, user) => {\r\n    const res = await fetch(baseUrl + city + user);\r\n    try{\r\n      const data = await res.json();\r\n      console.log(data);\r\n      postData('/data',\r\n       {countryName: data.geonames[0].countryName,\r\n        latitude: data.geonames[0].lat,\r\n        longitude: data.geonames[0].lng,\r\n      }).then(res => {\r\n        console.log(res);\r\n        updateUI();\r\n      })\r\n      return data;\r\n    }catch(error){\r\n      console.log('error', error)\r\n    }\r\n  }\r\n\r\n\r\nconst postData = async ( url = '', data = {})=>{\r\n    console.log(data)\r\n      const response = await fetch(url, {\r\n      method: 'POST', \r\n      credentials: 'same-origin', \r\n      headers: {\r\n          'Content-Type': 'application/json',\r\n      },\r\n      body: JSON.stringify(data),      \r\n    });\r\n  \r\n      try {\r\n        const newData = await response.json();\r\n        return newData\r\n      }catch(error) {\r\n      console.log(\"error\", error);\r\n      }\r\n  }\r\n\r\n  const updateUI = async() => {\r\n    const update = await fetch('/data');\r\n    const data = await update.json();\r\n    try{\r\n      console.log(data)\r\n      document.getElementById('location').innerHTML = 'Country:' + data.countryName;\r\n      document.getElementById('long').innerHTML = 'Longitude' + data.longitude;\r\n      document.getElementById('lat').innerHTML = 'Latitude' + data.latitude;\r\n    } catch(error) {\r\n      console.log('error', error)\r\n    }\r\n  }\r\n\r\n  \n\n//# sourceURL=webpack://Client/./src/client/js/handleSubmit.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getInfo\", function() { return getInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"generateInfo\", function() { return generateInfo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"postData\", function() { return postData; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"updateUI\", function() { return updateUI; });\nconst baseUrl = 'http://api.geonames.org/searchJSON?q='\r\nconst user = '&username=nour_m&maxRows=10'\r\n\r\nconst search = document.getElementById('search');\r\n\r\nsearch.addEventListener('click', generateInfo)\r\n\r\nfunction generateInfo(e){\r\n    e.preventDefault();\r\n    let city = document.getElementById('location').value\r\n    getInfo(baseUrl, city, user)\r\n}\r\n\r\nconst getInfo = async (baseUrl, city, user) => {\r\n    const res = await fetch(baseUrl + city + user);\r\n    try{\r\n      const data = await res.json();\r\n      console.log(data);\r\n      postData('/data',\r\n       {countryName: data.geonames[0].countryName,\r\n        latitude: data.geonames[0].lat,\r\n        longitude: data.geonames[0].lng,\r\n      }).then(res => {\r\n        console.log(res);\r\n        updateUI();\r\n      })\r\n      return data;\r\n    }catch(error){\r\n      console.log('error', error)\r\n    }\r\n  }\r\n\r\n\r\nconst postData = async ( url = '', data = {})=>{\r\n    console.log(data)\r\n      const response = await fetch(url, {\r\n      method: 'POST', \r\n      credentials: 'same-origin', \r\n      headers: {\r\n          'Content-Type': 'application/json',\r\n      },\r\n      body: JSON.stringify(data),      \r\n    });\r\n  \r\n      try {\r\n        const newData = await response.json();\r\n        return newData\r\n      }catch(error) {\r\n      console.log(\"error\", error);\r\n      }\r\n  }\r\n\r\n  const updateUI = async() => {\r\n    const update = await fetch('/');\r\n    const data = await update.json();\r\n    try{\r\n      console.log(data)\r\n      document.getElementById('country').innerHTML = 'Country:' + res.countryName;\r\n      document.getElementById('long').innerHTML = 'Longitude' + res.longitude;\r\n      document.getElementById('lat').innerHTML = 'Latitude' + res.latitude;\r\n    } catch(error) {\r\n      console.log('error', error)\r\n    }\r\n  }\r\n\r\n  \n\n//# sourceURL=webpack://Client/./src/client/js/handleSubmit.js?");
+
+/***/ }),
+
+/***/ "./src/client/media/beirut.png":
+/*!*************************************!*\
+  !*** ./src/client/media/beirut.png ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"beirut.png\");\n\n//# sourceURL=webpack://Client/./src/client/media/beirut.png?");
+
+/***/ }),
+
+/***/ "./src/client/media/london.png":
+/*!*************************************!*\
+  !*** ./src/client/media/london.png ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"london.png\");\n\n//# sourceURL=webpack://Client/./src/client/media/london.png?");
+
+/***/ }),
+
+/***/ "./src/client/media/paris.png":
+/*!************************************!*\
+  !*** ./src/client/media/paris.png ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"paris.png\");\n\n//# sourceURL=webpack://Client/./src/client/media/paris.png?");
+
+/***/ }),
+
+/***/ "./src/client/media/santorini.png":
+/*!****************************************!*\
+  !*** ./src/client/media/santorini.png ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"santorini.png\");\n\n//# sourceURL=webpack://Client/./src/client/media/santorini.png?");
 
 /***/ }),
 

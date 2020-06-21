@@ -3,6 +3,7 @@ const projectData = {};
 const express = require('express');
 const app = express();
 
+const path = require('path'); 
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -22,8 +23,8 @@ function listening(){
 }
 
 
-app.get('/data', function (req, res) {
-  res.sendFile('dist/index.html')
+app.get('/', function (req, res) {
+    res.sendFile(path.resolve('dist/index.html'));
 });
   
 app.post('/data', (req, res) => {
@@ -31,7 +32,5 @@ app.post('/data', (req, res) => {
     projectData.country = req.body.country
     projectData.longitude = req.body.longitude
     projectData.latitude = req.body.latitude
-    res.send({
-      msg: "Post received"
-    })
-  })
+    res.send(req.body)
+})
