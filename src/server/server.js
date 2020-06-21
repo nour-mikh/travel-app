@@ -32,5 +32,5 @@ app.post('/data', (req, res) => {
     projectData.country = req.body.country
     projectData.longitude = req.body.longitude
     projectData.latitude = req.body.latitude
-    res.send(req.body)
+    res.send(projectData)
 })
