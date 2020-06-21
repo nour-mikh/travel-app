@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page</title>
+	<link rel="stylesheet" type="text/css" href="main.scss">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<nav id = "navbar">
+		<div class = "navsection"> Home </div>
+		<div class = "navsection"> Plan </div>
+		<div class = "navsection"> Planned trips </div>
+		<div class = "navsection"> Details </div>
+	</nav>
+	<section id = "firstView">
+		<h1 id = "title1">Plan your trip and check the weather in advance</h1>
+		<div id = "polaroids">
+			<img src="media/paris.png">
+			<img src="media/beirut.png">
+			<img src="media/london.png">
+			<img src="media/santorini.png">
+		</div>
+	</section>
+
+	<section id = "secondView">
+		<div id = "plan">
+			<form class = "planned">
+			<h1> Plan your trip </h1>
+  			<label> Location </label><br>
+  			<input type="text" id="location" placeholder = "Please enter valid location"><br>
+  			<label> Visit Start Date </label><br>
+			<input type="text" id = "startDate" placeholder = "mm/dd/yyyy"><br>
+			<button id = "search"> Search </button>
+		</form>
+		<div class = "planned">
+			<h1> Weather Results</h1>
+		</div>
+		</div>
+		<h1> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </h1>
+	</section>
+
+	<section id = "thirdView">
+			<div class = "plannedTrips">
+				<h1 id = "planTitle"> You'll see here your planned trips : </h1>
+				<p id = country></p>
+				<p id = long></p>
+				<p id = lat></p>
+			</div>
+			<div class = "plannedTrips">
+				<h3> Would you like to download a pdf version of your trip ? </h3><br>
+				<button id = "pdf"><h3>Download pdf</h3> <i class="material-icons">file_download</i> </button>
+			</div>
+	</section>
+
+	<section id = "fourthView">
+		<h1> You made your choice ? Awesome ! Now let's take things further. </h1>
+		<h3> Here are some things to plan and some websites that could help: </h3>
+		<figure id = "resources">
+			<div>
+				<i class="material-icons">insert_drive_file</i>
+				<h2>Official Documents</h2>
+			</div>	
+			<div>
+  				<i class="material-icons">airplanemode_active</i>
+  				<h2>Plane Ticket</h2>
+			</div>
+			<div>
+				<i class="material-icons">hotel</i>
+				<h2>Hotel Accomodation</h2>
+			</div>
+			<div>
+				<i class="material-icons">attach_money</i>
+				<h2>Budget</h2>
+			</div>
+			<div>
+				<i class="material-icons">accessibility</i>
+				<h2>Insurance</h2>
+			</div>
+		</figure>
+
+	</section>
+</body>
+</html>
