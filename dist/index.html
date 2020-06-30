@@ -8,10 +8,10 @@
 <link href="main.css" rel="stylesheet"></head>
 <body>
 	<nav id = "navbar">
-		<div class = "navsection"> Home </div>
-		<div class = "navsection"> Plan </div>
-		<div class = "navsection"> Planned trips </div>
-		<div class = "navsection"> Details </div>
+		<div class = "navsection"><a href = "#firstView"> Home </a> </div>
+		<div class = "navsection"> <a href = "#secondView"> Plan </a> </div>
+		<div class = "navsection"> <a href = "#thirdView"> Planned trips </a> </div>
+		<div class = "navsection"> <a href = #fourthView> Details </a></div>
 	</nav>
 	<section id = "firstView">
 		<h1 id = "title1">Plan your trip and check the weather in advance</h1>
@@ -28,28 +28,50 @@
 			<form class = "planned">
 			<h1> Plan your trip </h1>
   			<label> Location </label><br>
-  			<input type="text" id="location" placeholder = "Please enter valid location"><br>
+  			<input type="text" id="location" placeholder = "City you want to visit"><br>
   			<label> Visit Start Date </label><br>
 			<input type="text" id = "startDate" placeholder = "mm/dd/yyyy"><br>
-			<button id = "search"> Search </button>
+			<label> Visit End Date </label><br>
+			<input type="text" id = "endDate" placeholder = "mm/dd/yyyy"><br>
+			<button id = "search"> Search and Generate pdf </button>
+			<button id = "save" > Save Trip</button>
 		</form>
 		<div class = "planned">
-			<h1> Weather Results</h1>
+			<h1> Trip and Expected Weather Results</h1>
+			<p id = "country"></p>
+			<p id = "long"></p>
+			<p id = "lat"></p>
+			<p id = "daysCount"></p>
+			<p id = "tripLength"></p>
+			<table>
+				<tr>
+					<td>Today</td>
+					<td>Tomorrow</td>
+					<td>In 2 days</td>
+					<td>In 3 days</td>
+					<td>In 4 days</td>
+				</tr>
+				<tr>
+					<td id = "day1"></td>
+					<td id = "day2"></td>
+					<td id = "day3"></td>
+					<td id = "day4"></td>
+					<td id = "day5"></td>
+				</tr>
+			</table>
 		</div>
 		</div>
-		<h1> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt </h1>
 	</section>
 
 	<section id = "thirdView">
 			<div class = "plannedTrips">
-				<h1 id = "planTitle"> You'll see here your planned trips : </h1>
-				<p id = "country"></p>
-				<p id = "long"></p>
-				<p id = "lat"></p>
+				<h1 id = "planTitle"> Here's an image of the location you'll be visiting </h1>
+				<img id = "pixImage">
 			</div>
 			<div class = "plannedTrips">
-				<h3> Would you like to download a pdf version of your trip ? </h3><br>
-				<button id = "pdf"><h3>Download pdf</h3> <i class="material-icons">file_download</i> </button>
+				<h3> Check your planned Trip(s) <button id = "clearTrip"> Clear Trip </button> </h3><br>
+				<ul></ul>
+
 			</div>
 	</section>
 
@@ -80,5 +102,7 @@
 		</figure>
 
 	</section>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.65/pdfmake.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.65/vfs_fonts.js'></script>
 <script src="main.js"></script></body>
 </html>

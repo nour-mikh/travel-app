@@ -3,7 +3,8 @@ body, html {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   color: #3b4948;
-  max-width: 100%; }
+  max-width: 100%;
+  scroll-behavior: smooth; }
 
 #navbar {
   display: grid;
@@ -16,11 +17,21 @@ body, html {
   height: 2.5em;
   margin-left: 10%; }
 
+a {
+  text-decoration: none;
+  color: #e8f3f3; }
+
 .navsection {
   padding-top: 0.7em;
+  background-color: #ec8c6f;
+  text-decoration: none;
+  color: #3b4948 !important; }
+
+button {
+  border-radius: 5px;
   background-color: #ec8c6f; }
 
-.navsection:hover, #pdf:hover {
+.navsection:hover, button:hover {
   text-decoration: underline;
   background-color: #3b4948;
   color: #ec8c6f; }
@@ -35,13 +46,13 @@ body, html {
   min-height: 100vh; }
 
 #polaroids {
-  margin-left: 20vh;
   max-width: 90vw;
   grid-area: c;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  height: fit-content; }
+  height: fit-content;
+  justify-content: center; }
 
 #title1 {
   grid-area: a;
@@ -67,15 +78,18 @@ body, html {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-content: center; }
+  justify-content: center; }
 
 .planned {
-  width: 30%;
+  min-width: 30%;
   height: fit-content;
   margin: 3em;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.3);
   padding: 1.5em;
   border-radius: 2%; }
+
+table {
+  width: 90%; }
 
 input {
   width: 40%;
@@ -94,24 +108,22 @@ input {
   margin: 0;
   padding: 1em; }
 
-#pdf {
-  width: fit-content;
-  height: fit-content;
-  margin-left: 7em;
-  margin-top: 1.5em;
-  background-color: #ec8c6f;
-  border-radius: 10px; }
-
-#pdf i {
-  font-size: 24px !important; }
-
 .plannedTrips {
   width: 50%;
   margin: 1em;
   text-align: center; }
 
+ul {
+  text-align: left; }
+
+li {
+  padding-bottom: 0.5rem; }
+
+#pixImage {
+  width: 90%;
+  height: 90%; }
+
 #fourthView h1, #fourthView h3 {
-  /* fix this with scss*/
   padding: 1em;
   padding-top: 3em;
   margin: 0; }
@@ -120,8 +132,7 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-left: 10em; }
+  justify-content: center; }
 
 #resources div {
   padding: 1em;
@@ -138,13 +149,16 @@ i:hover {
     margin-left: 0%;
     width: 100vw;
     grid-template-columns: repeat(4, 1fr); }
-  #polaroids {
-    margin-left: 0; }
   #polaroids img {
     width: auto;
     height: auto; }
+  #secondView, #fourthView {
+    max-height: fit-content; }
   .planned {
-    width: 50%; }
+    width: 50%;
+    height: auto; }
+  table {
+    font-size: smaller; }
   #thirdView {
     flex-direction: column; }
   h1 {
@@ -159,4 +173,11 @@ i:hover {
     margin-left: 0; }
   #resources div {
     margin-top: 1em; } }
+
+@media (min-width: 601px) and (max-width: 1000px) {
+  #polaroids img {
+    width: auto;
+    height: auto; }
+  #pixImage {
+    height: 60%; } }
 
