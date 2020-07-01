@@ -123,6 +123,9 @@ li {
   width: 90%;
   height: 90%; }
 
+#fourthView {
+  padding: 2em; }
+
 #fourthView h1, #fourthView h3 {
   padding: 1em;
   padding-top: 3em;
@@ -136,7 +139,8 @@ li {
 
 #resources div {
   padding: 1em;
-  margin-top: 5em; }
+  margin-top: 5em;
+  cursor: pointer; }
 
 i {
   font-size: 5em !important; }

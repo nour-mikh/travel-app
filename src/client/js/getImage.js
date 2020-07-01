@@ -7,6 +7,7 @@ function generateImage(){
     const pixKey = 'key=17177671-6b6705bca431b93a426874272&q=';
     let city = encodeURIComponent(document.getElementById('location').value)
     getTheImage(pixUrl, pixKey, city)
+    return 
 }
 
 const getTheImage = async (pixUrl, pixKey, city) => {

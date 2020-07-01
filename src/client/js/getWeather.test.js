@@ -1,4 +1,10 @@
+import "@babel/polyfill"
 import {generateWeather} from './getWeather'
 
-test('should return undefined if called', () => {
-    expect(generateWeather()).toBe(undefined)})
+
+describe("Generating Weather", () => {
+        test("should return undefined if called", () => {
+            document.body.innerHTML = '<input id="location" value="xyz">'
+              expect(generateWeather()).toBe(undefined);
+            });
+          });

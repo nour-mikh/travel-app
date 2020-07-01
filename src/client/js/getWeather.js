@@ -31,6 +31,7 @@ const getTheWeather = async (apiUrl, city, key) => {
     }
   }
 
+
 export {
     generateWeather,
     getTheWeather,

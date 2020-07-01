@@ -145,6 +145,9 @@ li{
 	height: 90%;
 }
 
+#fourthView{
+	padding: 2em;
+}
 #fourthView{ 
 	h1, h3{
 	padding: 1em;
@@ -152,8 +155,6 @@ li{
 	margin: 0;
 }}
 	
-
-
 #resources{
 	display: flex;
 	flex-direction: row;
@@ -164,6 +165,7 @@ li{
 #resources div{
 	padding: 1em;
 	margin-top: 5em;
+	cursor: pointer;
 }
 
 i{

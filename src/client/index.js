@@ -1,4 +1,5 @@
 import './styles/style.scss'
+import './js/clicks'
 
 import {getInfo} from './js/handleSubmit'
 import {generateInfo} from './js/handleSubmit'

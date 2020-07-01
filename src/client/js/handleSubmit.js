@@ -1,6 +1,15 @@
 const baseUrl = 'http://api.geonames.org/searchJSON?q='
 const user = '&username=nour_m&maxRows=10'
 
+ClassicEditor
+    .create( document.getElementById( 'editor' ) )
+    .then(editor => {
+        console.log(editor);
+     })
+        .catch( error => {
+         console.log(error);
+         });
+
 const search = document.getElementById('search');
 
 search.addEventListener('click', generateInfo)
